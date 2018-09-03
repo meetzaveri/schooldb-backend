@@ -17,6 +17,9 @@ module.exports = function(app, db) {
   // Updating the codes
   app.put("/codes/:id", userAPIfunctions.updateCodeSnippet);
 
+  // Updating the student data
+  app.put("/student/:id", userAPIfunctions.uploadStudentMarksheet);
+
   // Deleting the codes
   app.delete("/codes/:id", userAPIfunctions.deleteCodeSnippet);
 };
