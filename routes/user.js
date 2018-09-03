@@ -1,12 +1,6 @@
 const userAPIfunctions = require("../controllers/usercontroller");
 
 module.exports = function(app, db) {
-  // Runs code snippet
-  app.post("/run-code", userAPIfunctions.runCodeSnippet);
-
-  // Getting the individual codesnippets
-  app.get("/codes/:id", userAPIfunctions.getCodeSnippet);
-
   // Getting codes
   app.get("/codes", userAPIfunctions.getAllCodeSnippets);
 
@@ -14,8 +8,8 @@ module.exports = function(app, db) {
   // Creating the codesnippet
   app.post("/codes", userAPIfunctions.postCodeSnippet);
 
-  // Updating the codes
-  app.put("/codes/:id", userAPIfunctions.updateCodeSnippet);
+  // Fetching individual student data
+  app.get("/student", userAPIfunctions.getStudent);
 
   // Updating the student data
   app.put("/student/:id", userAPIfunctions.uploadStudentMarksheet);
