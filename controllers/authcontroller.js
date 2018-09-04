@@ -69,7 +69,7 @@ function signup(req, res) {
                 }
               }
             );
-          } else {
+          } else if (user.role === "teacher") {
             db.collection("teachers").insertOne(
               teacherSchema,
               (err, result) => {
@@ -81,6 +81,9 @@ function signup(req, res) {
                 }
               }
             );
+          } else {
+            let err = "User role not available";
+            callback(err, null);
           }
         }
       ],
