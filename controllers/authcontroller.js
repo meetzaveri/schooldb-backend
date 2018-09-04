@@ -69,7 +69,7 @@ function signup(req, res) {
                 }
               }
             );
-          } else {
+          } else if (user.role === "teacher") {
             db.collection("teachers").insertOne(
               teacherSchema,
               (err, result) => {
@@ -81,6 +81,9 @@ function signup(req, res) {
                 }
               }
             );
+          } else {
+            let err = "User role not available";
+            callback(err, null);
           }
         }
       ],
@@ -123,7 +126,9 @@ function login(req, res) {
           expiresIn: 86400 // expires in 24 hours
         }
       );
-      res.status(200).send({ auth: true, token: token, role: user.role });
+      res
+        .status(200)
+        .send({ auth: true, token: token, role: user.role, id: user._id });
     }
   );
 }
